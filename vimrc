@@ -1,5 +1,8 @@
-" Use pathogen to manage Vim plugins.
+" use pathogen to manage Vim plugins
 execute pathogen#infect()
+
+" use space to start commands
+let mapleader=" "
 
 " do not create backup files
 set nobackup
