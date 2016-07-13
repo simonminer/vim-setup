@@ -13,8 +13,8 @@ Create symbolic links for the .vimrc file and .vim folder in your home directory
     cd vim-setup
     mv ~/.vimrc ~/.vimrc.bak
     mv ~/.vim ~/.vim.bak
-    ln -s ./vimrc ~/.vimrc
-    ln -s ./.vim ~/.vim
+    ln -s $PWD/vimrc ~/.vimrc
+    ln -s $PWD ~/.vim
 
 ## Author
 
