@@ -1,27 +1,30 @@
 #!/bin/sh
 
-echo "\n"
-echo "Fetching the latest versions of git submodules vim plugins..."
-echo "\n"
+echo "[$0] Fetching the latest versions of git submodules vim plugins..."
 git submodule init
 git submodule update
 
-echo "\n"
-echo "Setting up symbolic links for ~/.vim directory and ~/.vimrc file..."
-echo "\n"
-mv "$HOME/.vim" "$HOME/.vim.bak"
-mv "$HOME/.vimrc" "$HOME/.vimrc.bak"
-ln -s "$PWD" "$HOME"/.vim
-ln -s "$PWD/vimrc" "$HOME/.vimrc"
+echo "[$0] Setting up symbolic links for ~/.vim directory and ~/.vimrc file..."
+VIMHOME="$HOME/.vim"
+if [ -e "$VIMHOME" ]
+then
+  mv "$VIMHOME" "$VIMHOME.bak"
+fi
+ln -s "$PWD" "$VIMHOME"
+
+VIMRC="$HOME/.vimrc"
+if [ -e "$VIMRC" ]
+then
+  mv "$VIMRC" "$VIMRC.bak"
+fi
+ln -s "$PWD/vimrc" "$VIMRC"
 
 # If the script runs more than once, a symlink could be created in the project root.
 # We don't want this, so delete it.
 EXTRA_SYMLINK='./.vim'
 if [ -e "$EXtRA_SYMLINK" ]
 then
-rm $EXTRA_SYMLINK
+  rm $EXTRA_SYMLINK
 fi
 
-echo ""
-echo "Setup completed succussfully."
-echo ""
+echo "[$0] Setup completed succussfully."
