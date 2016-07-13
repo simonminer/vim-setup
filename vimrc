@@ -45,7 +45,7 @@ filetype on
 filetype plugin on
 syntax enable
 set background=dark
-"colorscheme solarized-sdm
+colorscheme solarized-sdm
 
 " browser-like paging
 nmap <space> <pagedown>
