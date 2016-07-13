@@ -1,8 +1,12 @@
 " use pathogen to manage Vim plugins
 execute pathogen#infect()
+call pathogen#infect('bundle/{}')
 
 " use space to start commands
 let mapleader=" "
+
+" reload .vimrc without exiting vim
+map <leader>s :source ~/.vimrc<CR>
 
 " do not create backup files
 set nobackup
@@ -38,9 +42,10 @@ set history=100
 
 " set color scheme and syntax highlighting based on file type
 filetype on
+filetype plugin on
 syntax enable
 set background=dark
-colorscheme solarized-sdm
+"colorscheme solarized-sdm
 
 " browser-like paging
 nmap <space> <pagedown>
