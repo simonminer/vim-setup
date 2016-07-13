@@ -1,31 +1,38 @@
 " Use pathogen to manage Vim plugins.
 execute pathogen#infect()
 
-
-" increase the amount of time vim swaps and syncs buffers so
-" that less is lost in the event of a crash.
-" set updatecount=10
-" set swapsync='sync'
 " do not create backup files
-" set nobackup
+set nobackup
+
 " wrap to top of file when searching
 set wrapscan
-" turn on auto-indenting
+
+" turn on autoindenting
 set smartindent
+
 " expand tabs
 set expandtab
+
 " number of spaces for indenting
 set shiftwidth=2
+
 " show line numbers
 set number
+
 " allow deleting prior to the start of the current insert/edit
 set backspace=indent,eol,start
+
 " show current position (ruler) in bottom right corner
 set ruler
+
 " tab width 
 set tabstop=4
-" turn on syntax colors
-syntax on
+
+" set color scheme and syntax highlighting based on file type
+filetype on
+syntax enable
+set background=dark
+colorscheme solarized-sdm
 
 " browser-like paging
 nmap <space> <pagedown>
