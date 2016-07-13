@@ -4,20 +4,16 @@ execute pathogen#infect()
 " do not create backup files
 set nobackup
 
-" wrap to top of file when searching
-set wrapscan
-
-" turn on autoindenting
-set smartindent
-
-" expand tabs
-set expandtab
-
-" number of spaces for indenting
-set shiftwidth=2
-
 " show line numbers
 set number
+
+" Ttab = 4 spaces
+set tabstop=4
+set expandtab
+
+" figure out when to autoindent (2 spaces)
+set smartindent
+set shiftwidth=2
 
 " allow deleting prior to the start of the current insert/edit
 set backspace=indent,eol,start
@@ -25,8 +21,17 @@ set backspace=indent,eol,start
 " show current position (ruler) in bottom right corner
 set ruler
 
-" tab width 
-set tabstop=4
+" highlight searches as they happen
+set ignorecase
+set smartcase
+set incsearch
+
+" wrap to top of file when searching
+set wrapscan
+
+" keep more in memory to speed things up
+set hidden
+set history=100
 
 " set color scheme and syntax highlighting based on file type
 filetype on
@@ -42,21 +47,21 @@ inoremap # X<C-H>#
 
 nmap <F4> :!rake test %<cr>
 
-" Paste Mode On/Off 
-cmap <F7> :call Paste_on_off()<cr> 
-set pastetoggle=<F7> 
- 
-let paste_mode = 0 " 0 = normal, 1 = paste 
- 
-func! Paste_on_off() 
-        if g:paste_mode == 0 
-                set paste 
-                let g:paste_mode = 1 
-        else    
-                set nopaste 
-                let g:paste_mode = 0 
-        endif   
-        return  
+" Paste Mode On/Off
+cmap <F7> :call Paste_on_off()<cr>
+set pastetoggle=<F7>
+
+let paste_mode = 0 " 0 = normal, 1 = paste
+
+func! Paste_on_off()
+        if g:paste_mode == 0
+                set paste
+                let g:paste_mode = 1
+        else
+                set nopaste
+                let g:paste_mode = 0
+        endif
+        return
 endfunc
 
 
@@ -116,9 +121,9 @@ imap pgetopt use Getopt::Std;<cr>my %args;<cr>getopts( ' ', \%args );<cr><up><ri
 imap pqp $q->param( ' ' )<left><left><left><esc>xi
 iabbr podh1 =head1 NAME<cr><cr><cr>=head1 SYNOPSIS<cr><cr>    __SYNOPSIS<cr><left><left><left><left><cr>=head1 DESCRIPTION<cr><cr>__DESCRIPTION<cr><cr>=cut<cr><up><up><up><up><up><up><up><up><up><up><up>
 iabbr podi =item <cr><cr>=cut<cr><up><up><up><right><right><right><right><right>
-iabbr pclass #!/usr/local/bin/perl<cr><cr>=head1 NAME<cr><cr><cr><cr>=head1 SYNOPSIS<cr><cr>    __SYNOPSIS<cr><left><left><left><left><cr>=head1 DESCRIPTION<cr><cr>__DESCRIPTION<cr><cr>=cut<cr><cr>package __PACKAGE;<cr><cr>use strict;<cr>use warnings;<cr><cr>use Carp qw( croak );<cr>use vars qw( $AUTOLOAD );<cr><cr>my @attrs = qw( __ATTRS );<cr>my %attributes = ();<cr>@attributes{@attrs} = map( { 1 } @attrs );<cr><cr>sub new {<cr>my $class = shift;<cr>my $self = {};<cr>bless( $self, $class );<cr>return $self;<down><cr><cr>sub AUTOLOAD {<cr>my $self = shift;<cr>my $attr = $AUTOLOAD;<cr>$attr =~ s/.*:://;<cr>croak "Invalid attribute method: ->$attr()" unless exists( $attributes{$attr} );<cr><cr>my $prev = $self->{$attr};<cr>$self->{$attr} = shift if @_;<cr>return $prev;<down><down><cr><cr>1;<up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up>   
+iabbr pclass #!/usr/local/bin/perl<cr><cr>=head1 NAME<cr><cr><cr><cr>=head1 SYNOPSIS<cr><cr>    __SYNOPSIS<cr><left><left><left><left><cr>=head1 DESCRIPTION<cr><cr>__DESCRIPTION<cr><cr>=cut<cr><cr>package __PACKAGE;<cr><cr>use strict;<cr>use warnings;<cr><cr>use Carp qw( croak );<cr>use vars qw( $AUTOLOAD );<cr><cr>my @attrs = qw( __ATTRS );<cr>my %attributes = ();<cr>@attributes{@attrs} = map( { 1 } @attrs );<cr><cr>sub new {<cr>my $class = shift;<cr>my $self = {};<cr>bless( $self, $class );<cr>return $self;<down><cr><cr>sub AUTOLOAD {<cr>my $self = shift;<cr>my $attr = $AUTOLOAD;<cr>$attr =~ s/.*:://;<cr>croak "Invalid attribute method: ->$attr()" unless exists( $attributes{$attr} );<cr><cr>my $prev = $self->{$attr};<cr>$self->{$attr} = shift if @_;<cr>return $prev;<down><down><cr><cr>1;<up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up>
 imap pnotice Apache->request->log->notice( " " );<left><left><left><left><esc>s
-imap pdump use Data::Dumper;<cr>Dumper( );<esc><left><left><left>a 
+imap pdump use Data::Dumper;<cr>Dumper( );<esc><left><left><left>a
 
 " Coats
 imap pce if ( $Coats::ACTIVE ) {<cr>my $type = ' ';<cr>my %details = ( __DETAILS );<cr>Coats::Event->log( $type, %details );<up><up><left><left><esc>xi
@@ -149,8 +154,3 @@ nmap ; $a;<cr>
 
 " Template Toolkit
 imap [% [%  %]<esc><left><left><left>a
-
-set ignorecase
-set smartcase
-set incsearch
-
