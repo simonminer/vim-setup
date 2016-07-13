@@ -22,7 +22,7 @@ ln -s "$PWD/vimrc" "$VIMRC"
 # If the script runs more than once, a symlink could be created in the project root.
 # We don't want this, so delete it.
 EXTRA_SYMLINK='./.vim'
-if [ -e "$EXtRA_SYMLINK" ]
+if [ -e "$EXTRA_SYMLINK" ]
 then
   rm $EXTRA_SYMLINK
 fi
