@@ -18,7 +18,7 @@ Create symbolic links for the .vimrc file and .vim folder in your home directory
 
 ## Author
 
-* **Simon Miner** - *Primary (only?) author and user - [SimonMiner](https://github.com/simonminer)
+* **Simon Miner** - *Primary (only?) author and user* - [SimonMiner](https://github.com/simonminer)
 
 ## License
 
