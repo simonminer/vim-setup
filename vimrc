@@ -1,3 +1,7 @@
+" Use pathogen to manage Vim plugins.
+execute pathogen#infect()
+
+
 " increase the amount of time vim swaps and syncs buffers so
 " that less is lost in the event of a crash.
 " set updatecount=10
@@ -143,4 +147,3 @@ set ignorecase
 set smartcase
 set incsearch
 
-execute pathogen#infect()
