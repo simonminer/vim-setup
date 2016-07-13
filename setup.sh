@@ -13,6 +13,15 @@ mv "$HOME/.vim" "$HOME/.vim.bak"
 mv "$HOME/.vimrc" "$HOME/.vimrc.bak"
 ln -s "$PWD" "$HOME"/.vim
 ln -s "$PWD/vimrc" "$HOME/.vimrc"
+
 # If the script runs more than once, a symlink could be created in the project root.
 # We don't want this, so delete it.
-rm ./.vim
+EXTRA_SYMLINK='./.vim'
+if [ -e $EXtRA_SYMLINK ]
+then
+rm $EXTRA_SYMLINK
+fi
+
+echo ""
+echo "Setup completed succussfully."
+echo ""

@@ -13,13 +13,12 @@ Clone this GitHub repository.
 
     git clone https:////github.com/simonminer/vim-setup.git
     
-Create symbolic links for the .vimrc file and .vim folder in your home directory.
+Run the setup script.
 
     cd vim-setup
-    mv ~/.vimrc ~/.vimrc.bak
-    mv ~/.vim ~/.vim.bak
-    ln -s $PWD/vimrc ~/.vimrc
-    ln -s $PWD ~/.vim
+    ./setup.sh
+
+You should be good to go.
 
 ## Author
 
