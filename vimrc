@@ -47,9 +47,6 @@ syntax enable
 set background=dark
 colorscheme solarized-sdm
 
-" browser-like paging
-nmap <space> <pagedown>
-
 " turn off # exiting left
 inoremap # X<C-H>#
 
