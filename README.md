@@ -25,7 +25,12 @@ You should be good to go.
 
 vim-setup configures the customize vim environment that I use. This sincludes the following resources:
 
-* vimrc file (symlinked to ~/.vim by installation script).
+* vimrc file (symlinked to ~/.vim by installation script) - Customization highlights include:
+
+  * Leader key set to space instead of backslash.
+  * Solarized color scheme.
+  * Incremental highlighted search.
+
 * Several vim plugins installed as git submodules. These can be updated by running `git submodule update` and
 include the following:
 
@@ -53,6 +58,8 @@ include the following:
 The installation script (setup.sh) takes care of mapping these resources to your vim environment by
 creating symbolic links to your ~/.vim directory and ~/.vimrc file. Before doing this, it first backs up
 your existing .vim and .vimrc (if they exist) to .vim.bak and .vimrc.bak, respectively.
+
+vim-setup uses [pathogen.vim](https://github.com/tpope/vim-pathogen) for plugin management.
 
 ## Author
 
