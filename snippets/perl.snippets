@@ -58,16 +58,9 @@ snippet unless unless statement
 # unless one-liner statement
 snippet xunless Conditional unless one-liner statment
 	${1:expression} unless ${2:condition};
-# Try/Except
-snippet eval
-	local $@;
-	eval {
-		${1:# do something risky...}
-	};
-	if (my $e = $@) {
-		${0:# handle failure...}
-	}
-	}
+# ternary operator
+snippet ?: ternary operator
+	${1:result} = ${2:condition} ? ${3:true-value} : ${4:false-value}
 
 ### Loops
 # while Loop
@@ -89,6 +82,11 @@ snippet xfor for loop one-liner
 # foreach Loop
 snippet for
 	for my $${1:x} ( @${2:array} ) {
+		${0}
+	}
+# foreach key
+snippet fork foreach key
+	for my $${1:x} keys( %${2:array} ) {
 		${0}
 	}
 # next if
@@ -184,8 +182,12 @@ snippet m/ complex regex
 	m/
 	  ${1:regex}
 	/xms
+# substitution
 snippet s/ substituion
 	s/${1:regex}/${2:replacement}/
+# compiled regex
+snippet qr compiled regex
+	qr/${1:regex}/
 
 ### Builtins
 # map
@@ -224,6 +226,22 @@ snippet sort sort
 # chomp
 snippet chomp chomp
 	chomp( $${1:line} )
+# bless
+snippet bless bless
+	bless( $${1:self}, $${2:class} )
+# qw
+snippet qw qw
+	qw( ${1:words} )
+# exists
+snippet exists exists
+	exists( $${1:variable} )
+# defined
+snippet defined defined
+	defined( $${1:variable} )
+# croak
+snippet croak croak
+	croak "${1:message}" if ${2:condition};
+	${0}
 
 ### Documentation
 # Pod stub
@@ -338,27 +356,70 @@ snippet open read file and process each line
 snippet opendir read directory and process each file
 	opendir( <$${1:dh}>, $${2:dir} ) or die "Could not open directory $$2 - $!";
 	my @${3:files} = map( { /^\.\.?$/ ? () : $_ } readdir(  ) );
-	while ( my $${3:line} = <$$1> ) {
+	for my $${4:file} ( @$3 ) {
 	    ${0}
 	}
 	close( <$$1> );
+# read entire File
+snippet slurp read entire file
+	my $${1:var} = do { local $/; open my $2, '<', "${2:file}"; <FILE> };
+	${0}
 	
 ### Testing
-# use test classes
-snippet tuse
+# set up unit test program
+snippet tunit set up unit test program
+	#!/usr/local/bin/perl
+
+	### Unit test program for class ${1:class}.
+
+	use strict;
+	use warnings;
 	use Test::More;
 
-### Miscellanious
+	use $1;
+
+	my $${2:object} = $1->new;
+	isa_ok( $2, $1, "constructor return value" );
+	can_ok( $2, qw(
+	  ${3:methods}
+	);
+
+	${0}
+
+	done_testing;
+# is test
+snippet is is test
+	is( $${1:actual}, ${2:expected}, "${3:description}" );
+# is test
+snippet isnt isnt test
+	isnt( $${1:actualtest}, ${2:expected}, "${3:description}" );
+
+### Debugging
 # dump variable contents
 snippet dump dump variable contents
 	use Data::Dumper;
 	warn Dumper( ${1:variable} )
-# read File
-snippet slurp file slurp
-	my $${1:var} = do { local $/; open my $file, '<', "${2:file}"; <$file> };
-	${0}
-	## use critic
+# generate callstack
+snippet callstack generate callstack
+	my $level = 0;
+	my @callers = ();
+	while ( my ( $package, $filename, $line ) = caller( $level ) ) {
+	  my $caller = join( '||', $package, $filename, $line );
+	  push( @callers, $caller );
+	  $level += 1;
+	}
+	my $stack = join( ' => ', @callers );
+
+### Miscellanious
 # hash slice
 snippet hslice hash slice
 	@{ ${1:hash}  }{ ${0:array} }
-
+# eval block
+snippet eval eval block
+	local $@;
+	eval {
+		${1:# do something risky...}
+	};
+	if (my $e = $@) {
+		${0:# handle failure...}
+	}

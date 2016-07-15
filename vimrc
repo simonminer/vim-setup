@@ -79,33 +79,6 @@ imap '' ''<left>
 imap "" ""<left>
 imap `` ``<left>
 
-" Perl
-iabbr p#! #!/usr/local/bin/perl<cr><cr>use strict;<cr>use warnings;<cr>
-iabbr pif if ( ) {<cr>__CODE<up><left><left><left><left>
-iabbr pelsif elsif ( ) {<cr>__CODE<up><left><left><left>
-iabbr pelse else {<cr>
-iabbr pife if ( ) {<cr>__CODE<esc><down>$a<cr>else {<cr>__CODE<up><up><up><up><left><left><left><left>
-imap p?: x ? __COND1 : __COND2<left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><esc>xi
-iabbr punless unless ( ) {<cr>__CODE<up><left>
-iabbr pwhile while ( ) {<cr>__CODE<up><left><left><left>
-iabbr pfor foreach my ( __CONDITION ) {<cr>__CODE<up>
-iabbr pfork foreach my ( keys( __HASH ) ) {<cr>__CODE<up>
-iabbr pforsk foreach my ( sort( { __CONDITION } keys( __HASH ) ) ) {<cr>__CODE<up>
-iabbr psub sub {<cr>my( __PARAMS ) = @_;<cr>__CODE<up><up><left><left>
-iabbr popen open( my $fh, '<', ) or die "Could not open file __FILE: $!";<cr>while ( <$fh> ) {<cr>chomp;<cr>__CODE<down><cr>close( $fh );<up><up><up><up><up><right><right><right><right><right>
-iabbr popendir opendir( DIR, ) or die "Could not open directory __DIRECTORY: $!";<cr>my @files = map( { /^\.\.?$/ ? () : $_ } readdir( DIR ) );<cr><cr>closedir( DIR );<cr><up><up><up><up><right><right><right><right><right><right><right><right><right><right><right><right><right>
-imap p/ m//xsm<left><left><left><left>
-imap ps/ s//__NEW/xsm<left><left><left><left><left><left><left><left><left><left>
-imap pqw qw(  )<left><left>
-imap pjoin join( , __LIST )<left><left><left><left><left><left><left><left><left><left>
-imap psplit split( //, __STRING )<left><left><left><left><left><left><left><left><left><left><left><left><left>
-imap pmap map( {  } __LIST )<left><left><left><left><left><left><left><left><left><left><left>
-imap pgrep grep( , __LIST )<left><left><left><left><left><left><left><left><left><left>
-imap ppush push( , __LIST )<left><left><left><left><left><left><left><left><left><left>
-imap pcroak croak  unless __CONDITION;<left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left>""
-imap pdef defined(  )<left><left>
-imap pexi exists(  )<left><left>
-
 " Common Perl shortcuts @ Christianbook.com
 iabbr pdate my( $day, $month, $year ) = ( localtime() )[3..5];<cr>my $datestamp = sprintf( "%04d%02d%02d", $year + 1900, $month + 1, $day );<cr>
 iabbr ptime my( $sec, $min, $hour, $day, $month, $year ) = ( localtime() )[0..5];<cr>my $timestamp = sprintf( "%04d%02d%02d%02d%02s%02s", $year + 1900, $month + 1, $day, $hour, $min, $sec );<cr>
