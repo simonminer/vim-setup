@@ -11,8 +11,9 @@ map <leader>s :source ~/.vimrc<CR>
 " do not create backup files
 set nobackup
 
-" show line numbers
+" show and toggle line numbers
 set number
+nmap <leader>n :set number!<cr>
 
 " Ttab = 4 spaces
 set tabstop=4
