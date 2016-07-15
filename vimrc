@@ -45,7 +45,7 @@ set history=100
 filetype on
 syntax enable
 set background=dark
-colorscheme solarized
+colorscheme vividchalk
 
 " turn off # exiting left
 inoremap # X<C-H>#
