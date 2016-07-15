@@ -42,10 +42,9 @@ set history=100
 
 " set color scheme and syntax highlighting based on file type
 filetype on
-filetype plugin on
 syntax enable
 set background=dark
-colorscheme solarized-sdm
+colorscheme solarized
 
 " turn off # exiting left
 inoremap # X<C-H>#
