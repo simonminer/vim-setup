@@ -28,7 +28,7 @@ vim-setup configures the customize vim environment that I use. This sincludes th
 * vimrc file (symlinked to ~/.vim by installation script) - Customization highlights include:
 
   * Leader key set to space instead of backslash.
-  * [Solarized](https://github.com/altercation/vim-colors-solarized.git) Socolor scheme. (I use this with the D dark baackground color preset in [iTerm2](https://www.iterm2.com/).)
+  * The [vividchalk](hhttps://github.com/tpope/vim-vividchalk.git) color scheme.
   * Incremental highlighted search.
 
 * Several vim plugins installed as git submodules. These can be updated by running `git submodule update` and
