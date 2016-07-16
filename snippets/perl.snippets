@@ -364,7 +364,18 @@ snippet opendir read directory and process each file
 snippet slurp read entire file
 	my $${1:var} = do { local $/; open my $2, '<', "${2:file}"; <FILE> };
 	${0}
-	
+
+### Date and time
+# today's date
+snippet today today's date
+	my ( $day, $month, $year ) = ( localtime() )[3..5];
+	my $today = sprintf( "%04d%02d%02d", $year + 1900, $month + 1, $day );
+ 
+#  current date and time
+snippet now  current date and time
+	my( $sec, $min, $hour, $day, $month, $year ) = ( localtime() )[0..5];
+	my $now = sprintf( "%04d%02d%02d%02d%02s%02s", $year + 1900, $month + 1, $day, $hour, $min, $sec );
+
 ### Testing
 # set up unit test program
 snippet tunit set up unit test program

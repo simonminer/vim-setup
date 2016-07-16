@@ -80,8 +80,6 @@ imap "" ""<left>
 imap `` ``<left>
 
 " Common Perl shortcuts @ Christianbook.com
-iabbr pdate my( $day, $month, $year ) = ( localtime() )[3..5];<cr>my $datestamp = sprintf( "%04d%02d%02d", $year + 1900, $month + 1, $day );<cr>
-iabbr ptime my( $sec, $min, $hour, $day, $month, $year ) = ( localtime() )[0..5];<cr>my $timestamp = sprintf( "%04d%02d%02d%02d%02s%02s", $year + 1900, $month + 1, $day, $hour, $min, $sec );<cr>
 imap ppackage package <cr><cr>1;<cr><cr>__DATA__<cr><up><up><up><up><up><right><right><right><right><right><right><right><right>
 iabbr pnew sub new {<cr>my $class = shift;<cr>my $self = {};<cr>bless( $self, $class );<cr>return $self;<down><down>
 iabbr pauto use Carp qw( croak );<cr>use vars qw( $AUTOLOAD );<cr><cr>my @attrs = qw( );<cr>my %attributes = ();<cr>@attributes{@attrs} = map( { 1 } @attrs );<cr><cr>sub AUTOLOAD {<cr>my $self = shift;<cr>my $attr = $AUTOLOAD;<cr>$attr =~ s/.*:://;<cr>croak "Invalid attribute method: ->$attr()" unless exists( $attributes{$attr} );<cr><cr>my $prev = $self->{$attr};<cr>$self->{$attr} = shift if @_;<cr>return $prev;<up><up><up><up><up><up><up><up><up><up><up><up><left><left>
