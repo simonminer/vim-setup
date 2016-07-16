@@ -47,6 +47,9 @@ syntax enable
 set background=dark
 colorscheme vividchalk
 
+" classify files with no extension as Perl
+autocmd BufNewFile,BufRead * if expand('%:t') !~ '\.' | set syntax=perl | endif
+"
 " turn off # exiting left
 inoremap # X<C-H>#
 
