@@ -82,11 +82,13 @@ imap '' ''<left>
 imap "" ""<left>
 imap `` ``<left>
 
+" Run Perl commands on the curent file
+map <esc><leader>1 :!perl -c %<cr>
+map <esc><leader>2 :!perl -d %<cr>
+map <esc><leader>3 :%!perltidy<cr>
+map <esc><leader>4 :!prove -v %<cr>
+
 " Common Perl shortcuts @ Christianbook.com
-imap ppackage package <cr><cr>1;<cr><cr>__DATA__<cr><up><up><up><up><up><right><right><right><right><right><right><right><right>
-iabbr pnew sub new {<cr>my $class = shift;<cr>my $self = {};<cr>bless( $self, $class );<cr>return $self;<down><down>
-iabbr pauto use Carp qw( croak );<cr>use vars qw( $AUTOLOAD );<cr><cr>my @attrs = qw( );<cr>my %attributes = ();<cr>@attributes{@attrs} = map( { 1 } @attrs );<cr><cr>sub AUTOLOAD {<cr>my $self = shift;<cr>my $attr = $AUTOLOAD;<cr>$attr =~ s/.*:://;<cr>croak "Invalid attribute method: ->$attr()" unless exists( $attributes{$attr} );<cr><cr>my $prev = $self->{$attr};<cr>$self->{$attr} = shift if @_;<cr>return $prev;<up><up><up><up><up><up><up><up><up><up><up><up><left><left>
-iabbr pusetyp use lib '/www/modules';<cr>use DBI::DatabaseSession;<cr>use Log::Writer;<cr>
 iabbr pdb my $db = DBI::DatabaseSession->new();<cr>
 iabbr pdbr my $sth = $db->run( );<left><left><left>
 iabbr pdbf while ( my( ) = $sth->fetchrow() ) {<cr>__CODE<down><down>$sth->finish();<up><up><up><up><left><left><left><left>
