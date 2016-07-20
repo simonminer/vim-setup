@@ -29,6 +29,12 @@ set backspace=indent,eol,start
 " show current position (ruler) in bottom right corner
 set ruler
 
+" jump to last cursor position when opening a file
+if has("autocmd")
+  au BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$")
+    \| exe "normal! g'\"" | endif
+endif
+
 " highlight searches as they happen
 set ignorecase
 set smartcase
