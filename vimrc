@@ -39,6 +39,7 @@ endif
 set ignorecase
 set smartcase
 set incsearch
+set hlsearch
 
 " wrap to top of file when searching
 set wrapscan
