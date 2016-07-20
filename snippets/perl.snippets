@@ -15,12 +15,12 @@ snippet strict use strict and warnings
 ### Flow Control
 # if
 snippet if if statement
-	if (${1}) {
+	if ( ${1} ) {
 		${0}
 	}
 # if..else
 snippet ife if..else statement
-	if (${1}) {
+	if ( ${1} ) {
 		${2}
 	}
 	else {
@@ -28,10 +28,10 @@ snippet ife if..else statement
 	}
 # if..elsif..else
 snippet ifee if..elsif..else statment
-	if (${1}) {
+	if ( ${1} ) {
 		${2}
 	}
-	elsif (${3}) {
+	elsif ( ${3} ) {
 		${4:# elsif...}
 	}
 	else {
@@ -39,7 +39,7 @@ snippet ifee if..elsif..else statment
 	}
 # elsif
 snippet eif elsif statement
-	elsif (${1}) {
+	elsif ( ${1} ) {
 		${0}
 	}
 # else
@@ -52,7 +52,7 @@ snippet xif if one-liner statement
 	${1:expression} if ${2:condition};
 # unless 
 snippet unless unless statement
-	unless (${1}) {
+	unless ( ${1} ) {
 		${0}
 	}
 # unless one-liner statement
@@ -86,7 +86,7 @@ snippet for
 	}
 # foreach key
 snippet fork foreach key
-	for my $${1:x} keys( %${2:array} ) {
+	for my $${1:x} ( keys( %${2:array} ) ) {
 		${0}
 	}
 # next if
@@ -153,13 +153,13 @@ snippet moose new Moose class
 	${0}
 # parent
 snippet parent parent class declaration
-	use parent qw(${0:Parent Class});
+	use parent qw( ${0:Parent Class} );
 # package keyword
 snippet pkg
 	__PACKAGE__
 # call package function with some parameter
 snippet pkgmv
-	__PACKAGE__->${1:package_method}(${2:var})
+	__PACKAGE__->${1:package_method}( ${2:var} )
 # call package function without a parameter
 snippet pkgm
 	__PACKAGE__->${1:package_method}()
@@ -170,7 +170,7 @@ snippet pkget
 
 # call package function with a parameter
 snippet pkgetv
-	__PACKAGE__->get_${1:package_method}(${0:var})
+	__PACKAGE__->get_${1:package_method}( ${0:var} )
 
 
 ### Regular Expressions
