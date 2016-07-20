@@ -41,6 +41,9 @@ set smartcase
 set incsearch
 set hlsearch
 
+" toggle search highlighting
+noremap <leader><esc> :set hlsearch! hlsearch?<CR>
+
 " wrap to top of file when searching
 set wrapscan
 
