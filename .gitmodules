@@ -22,6 +22,6 @@
 [submodule "bundle/vim-surround"]
 	path = bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
-[submodule "bundle/vim-vividchalk"]
-	path = bundle/vim-vividchalk
-	url = https://github.com/tpope/vim-vividchalk.git
+[submodule "bundle/desert_vim"]
+	path = bundle/desert_vim
+	url = https://github.com/fugalh/desert.vim.git

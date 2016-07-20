@@ -52,7 +52,7 @@ set history=100
 filetype on
 syntax enable
 set background=dark
-colorscheme vividchalk
+colorscheme desert
 
 " classify files with no extension as Perl
 autocmd BufNewFile,BufRead * if expand('%:t') !~ '\.' | set syntax=perl | endif
