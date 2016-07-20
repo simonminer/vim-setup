@@ -21,7 +21,7 @@ set expandtab
 
 " figure out when to autoindent (2 spaces)
 set smartindent
-set shiftwidth=2
+set shiftwidth=4
 
 " allow deleting prior to the start of the current insert/edit
 set backspace=indent,eol,start
