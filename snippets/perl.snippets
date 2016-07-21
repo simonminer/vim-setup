@@ -11,6 +11,7 @@ snippet begin begin block
 snippet strict use strict and warnings
 	use strict;
 	use warnings;
+	${0}
 
 ### Flow Control
 # if
@@ -115,7 +116,7 @@ snippet subs subroutine with shift of first argument
 		${0}
 	}
 # Subroutine with unpacked arguments.
-snippet subu subroutine with unpacked arguments
+snippet suba subroutine with unpacked arguments
 	sub ${1:function_name} {
 		my ( $${2:args} ) = @_;
 		${0}
@@ -256,8 +257,8 @@ snippet sck scalar keys
 	scalar( keys( %${1:hash} ) )
 
 ### Documentation
-# Pod stub
-snippet ppod main POD documentation for file
+# main POD documentation for file
+snippet pod main POD documentation for file
 	=head1 NAME
 
 	${1:ClassName} - ${2:ShortDesc}
@@ -272,71 +273,26 @@ snippet ppod main POD documentation for file
 
 	${0:# longer description...}
 
+	=head1 AUTHOR
 
-	=head1 INTERFACE
-
-
-	=head1 DEPENDENCIES
-
-
-	=head1 SEE ALSO
-
+	Created on `strftime("%A, %B %d, %Y")` by ${4:name}.
 
 	=cut
-# Heading for a subroutine stub
-snippet psub POD subroutine heading
-	=head2 ${1:MethodName}
+# subroutine heading and description
+snippet psub POD subroutine heading and description
+	=over 4
+	=head2 ${1:function_name}
 
-	${0:Summary....}
+	  ${2:examples}
 
+	${0:description}
+
+	=back 4
 	=cut
-# Heading for inline subroutine pod
-snippet psubi POD inline subroutine heading
-	=head2 ${1:MethodName}
-
-	${0:Summary...}
-
-	=cut
-# inline documented subroutine
-snippet subpod POD inline subroutine documentation
-	=head2 $1
-
-	Summary of $1
-
-	=cut
-
-	sub ${1:subroutine_name} {
-		${0}
-	}
-# Subroutine signature
-snippet parg subroutine signature
-	=over 2
-
-	=item
-	Arguments
-
-	=over 3
-
-	=item
-	C<${1:DataStructure}>
-
-	  ${2:Sample}
-
-	=back
-
-	=item
-	Return
-
-	=over 3
-
-	=item
-	C<${0:...return data}>
-
-	=back
-
-	=back
-
-	=cut
+# program section break
+snippet ## program section break
+	###################################### ${1:section_name} ##############################
+	${0}
 
 ### Moose
 # Moose has
@@ -437,8 +393,82 @@ snippet callstack generate callstack
 	  $level += 1;
 	}
 	my $stack = join( ' => ', @callers );
+# mod_perl log message
+snippet mpl mod_perl log message
+	Apache->request->log->notice( "${1:message}" );
+	${0}
+### Command Line Arguments
+# use Getopt::Long
+snippet clu use Getopt::Long
+	use Getopt::Long;
+	${0}
+# GetOptions
+snippet cl GetOptions
+	GetOptions(
+	  '${1:argument}${2}' => \$args{'$1'},
+	);
+
+### Database
+# use DBI::DatabaseSession;
+snippet dbu use DBI::DatabaseSession
+	use DBI::DatabaseSession;
+	${0}
+# create new DBI::DatabaseSession object;
+snippet db new DBI::DatabaseSession object
+	my $db = DBI::DatabaseSession->new();
+	${0}
+# execute SQL query
+snippet dbr execute SQL query
+	my $${1:sth} = $db->run( $${2:sql}, ${3:[]} );
+	while ( my( ${4:values} ) = $$1->fetchrow ) {
+	    ${0}
+	}
+	$$1->finish;
+
+### Logging
+# use Log::Writer
+snippet logu use Log::Writer
+	use Log::Writer;
+	${0}
+# create new Log::Writer
+snippet log new Log::Writer
+	my $log = Log::Writer->new( file => $${1:file} );
+	${0}
+# set up logging session
+snippet logi set up logging session
+	$log->init();
+
+	${0}
+
+	$log->cleanup();
+# log debugging message
+snippet ld log debugging message
+	$log->debug( "${1:message}" );
+	${0}
+# log info message
+snippet li log info message
+	$log->info( "${1:message}" );
+	${0}
+# log warning message
+snippet lw log warning message
+	$log->warning( "${1:message}" );
+	${0}
+# abort program
+snippet la abort program
+	$log->abort( "${1:message}" ) unless ${2:condition};
+	${0}
 
 ### Miscellanious
+# heredoc
+snippet here heredoc
+	my $${1:variable} = <<"${2:label}";
+	${0}
+	$2
+# new hash
+snippet hash new hash
+	my %${1:name} = (
+	  ${2:key} => ${3:value},
+	);
 # hash slice
 snippet hslice hash slice
 	@{ ${1:hash}  }{ ${0:array} }
