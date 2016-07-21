@@ -65,13 +65,12 @@ inoremap # X<C-H>#
 
 nmap <F4> :!rake test %<cr>
 
-" Paste Mode On/Off
-cmap <F7> :call Paste_on_off()<cr>
-set pastetoggle=<F7>
-
+" Toggle paste mode
+map <leader>p :call Toggle_paste_mode()<cr>i
+set pastetoggle=<leader>p
 let paste_mode = 0 " 0 = normal, 1 = paste
 
-func! Paste_on_off()
+func! Toggle_paste_mode()
         if g:paste_mode == 0
                 set paste
                 let g:paste_mode = 1
