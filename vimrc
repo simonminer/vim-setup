@@ -42,7 +42,7 @@ set incsearch
 set hlsearch
 
 " toggle search highlighting
-noremap <leader><esc> :set hlsearch! hlsearch?<CR>
+noremap <leader>h :set hlsearch! hlsearch?<CR>
 
 " wrap to top of file when searching
 set wrapscan
@@ -92,55 +92,15 @@ imap "" ""<left>
 imap `` ``<left>
 
 " Run Perl commands on the curent file
-map <esc><leader>1 :!perl -c %<cr>
-map <esc><leader>2 :!perl -d %<cr>
-map <esc><leader>3 :%!perltidy<cr>
-map <esc><leader>4 :!prove -v %<cr>
+map <leader>1 :!perl -c %<cr>
+map <leader>2 :!perl -d %<cr>
+map <leader>3 :%!perltidy<cr>
+map <leader>4 :!prove -v %<cr>
 
 " Common Perl shortcuts @ Christianbook.com
-iabbr pdb my $db = DBI::DatabaseSession->new();<cr>
-iabbr pdbr my $sth = $db->run( );<left><left><left>
-iabbr pdbf while ( my( ) = $sth->fetchrow() ) {<cr>__CODE<down><down>$sth->finish();<up><up><up><up><left><left><left><left>
-iabbr plog my $logfile =;<cr>my $log = Log::Writer->new( file => $logfile );<cr><up><up><right><right><right><right><right><right><right><right><right><right><right><right><right>
-iabbr plogi $log->init();<cr><cr><cr>$log->cleanup();<up><up>
-imap pln $log->info( " " )<left><left><left><esc>xi
-imap plb $log->abort( " " ) unless __CONDITION;<left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><esc>xi
-iabbr psql my $sql = <<"END_SQL";<cr><cr><left><left><left><left>END_SQL<cr><up><up><left><left>
-iabbr pfin $sth->finish();<cr>
-imap pgetopt use Getopt::Std;<cr>my %args;<cr>getopts( ' ', \%args );<cr><up><right><right><right><right><right><right><right><right><right><right><right><esc>xi
-imap pqp $q->param( ' ' )<left><left><left><esc>xi
-iabbr podh1 =head1 NAME<cr><cr><cr>=head1 SYNOPSIS<cr><cr>    __SYNOPSIS<cr><left><left><left><left><cr>=head1 DESCRIPTION<cr><cr>__DESCRIPTION<cr><cr>=cut<cr><up><up><up><up><up><up><up><up><up><up><up>
-iabbr podi =item <cr><cr>=cut<cr><up><up><up><right><right><right><right><right>
-iabbr pclass #!/usr/local/bin/perl<cr><cr>=head1 NAME<cr><cr><cr><cr>=head1 SYNOPSIS<cr><cr>    __SYNOPSIS<cr><left><left><left><left><cr>=head1 DESCRIPTION<cr><cr>__DESCRIPTION<cr><cr>=cut<cr><cr>package __PACKAGE;<cr><cr>use strict;<cr>use warnings;<cr><cr>use Carp qw( croak );<cr>use vars qw( $AUTOLOAD );<cr><cr>my @attrs = qw( __ATTRS );<cr>my %attributes = ();<cr>@attributes{@attrs} = map( { 1 } @attrs );<cr><cr>sub new {<cr>my $class = shift;<cr>my $self = {};<cr>bless( $self, $class );<cr>return $self;<down><cr><cr>sub AUTOLOAD {<cr>my $self = shift;<cr>my $attr = $AUTOLOAD;<cr>$attr =~ s/.*:://;<cr>croak "Invalid attribute method: ->$attr()" unless exists( $attributes{$attr} );<cr><cr>my $prev = $self->{$attr};<cr>$self->{$attr} = shift if @_;<cr>return $prev;<down><down><cr><cr>1;<up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up><up>
 imap pnotice Apache->request->log->notice( " " );<left><left><left><left><esc>s
-imap pdump use Data::Dumper;<cr>Dumper( );<esc><left><left><left>a
-
-" Coats
-imap pce if ( $Coats::ACTIVE ) {<cr>my $type = ' ';<cr>my %details = ( __DETAILS );<cr>Coats::Event->log( $type, %details );<up><up><left><left><esc>xi
-imap pcd $Coats::DEBUGGER->debug(  )<cr>  if $Coats::DEBUGGER;<up><right><right><right>
-
-" SQL
-iabbr qse select<cr>from __FROM<cr>where __WHERE<up><up>
-iabbr qin insert into ( __COLUMNS )<cr>values ( __VALUES )<up><left><left><left><left><left><left><left><left><left><left><left>
-iabbr qup update<cr>set __SET<cr>where __WHERE<up><up>
-iabbr qde delete from<cr>where __WHERE<up>
-
-" Oracle DDL statements
-iabbr otab create table (<cr>  __COLUMN_NAME<cr>)<cr>storage ( initial 1M next 1M minextents 1 maxextents unlimited pctincrease 0 )<cr>tablespace __TABLESPACE_NAME;<up><up><up><up><left><left>
-iabbr opk alter table add constraint __CONSTRAINT_NAME primary key ( id ) using index<cr>  storage ( initial 1M next 1M minextents 1 maxextents unlimited pctincrease 0 )<cr>tablespace __TABLESPACE_NAME;<up><up><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left>
-iabbr oidx create index on __TABLE_NAME ( __COLUMN_NAME )<cr>  storage ( initial 1M next 1M minextents 1 maxextents unlimited pctincrease 0 )<cr>tablespace __TABLESPACE_NAME;<up><up><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left>
-iabbr oseq create sequence start with 1000000;<left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left><left>
-
-" Ruby and Rails
-imap rdef def<cr>end<up><space>
-imap rtest test ''<esc><right>a do<cr>__CODE<cr>end<up><up><right><right><right>
-imap rputs puts ""
-imap r# #{{
 
 " Go to the next double underscore and replace the word that follows it.
 nmap _ /__<cr>cw
 " Add a semi-colon at the end of this line and go to the next.
 nmap ; $a;<cr>
-
-" Template Toolkit
-imap [% [%  %]<esc><left><left><left>a
