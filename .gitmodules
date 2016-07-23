@@ -25,3 +25,6 @@
 [submodule "bundle/desert_vim"]
 	path = bundle/desert_vim
 	url = https://github.com/fugalh/desert.vim.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git

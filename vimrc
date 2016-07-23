@@ -91,16 +91,29 @@ imap '' ''<left>
 imap "" ""<left>
 imap `` ``<left>
 
+" Add a semi-colon at the end of this line and go to the next.
+nmap ; $a;<cr>
+
 " Run Perl commands on the curent file
 map <leader>1 :!perl -c %<cr>
 map <leader>2 :!perl -d %<cr>
 map <leader>3 :%!perltidy<cr>
 map <leader>4 :!prove -v %<cr>
 
-" Common Perl shortcuts @ Christianbook.com
-imap pnotice Apache->request->log->notice( " " );<left><left><left><left><esc>s
-
 " Go to the next double underscore and replace the word that follows it.
 nmap _ /__<cr>cw
-" Add a semi-colon at the end of this line and go to the next.
-nmap ; $a;<cr>
+
+" Syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height=5
+
+let g:syntastic_enable_perl_checker = 1
+let g:syntastic_perl_checkers = ['perl', 'podchecker']
+
