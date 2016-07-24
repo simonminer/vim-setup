@@ -55,8 +55,9 @@ include the following:
     * xml.snippets
   * [surround.vim](https://github.com/tpope/vim-surround) - Commands to make quoting/parenthesizing/tagging simpler.
   * [syntastic.vim](https://github.com/scrooloose/syntastic) - Automatic syntax checking for the following languages:
-    * Perl
-    * HTML
+    * Perl - via ``perl -c``.
+    * HTML - using [Tidy](http://www.html-tidy.org/) which must be installed on the system.
+    * Javascript - using [JSHint](http://jshint.com) which must be installed on the system.
 
 The installation script (setup.sh) takes care of mapping these resources to your vim environment by
 creating symbolic links to your ~/.vim directory and ~/.vimrc file. Before doing this, it first backs up
