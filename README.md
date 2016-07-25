@@ -21,6 +21,9 @@ Run the setup script.
 
 You should be good to go.
 
+(Note: When pulling and update, you should run ``git submodule init`` and ``git submodule update``
+to ensure you have the necessary and most up-to-date versions of the vim plugins used in this setup.)
+
 ## Description
 
 vim-setup configures the customize vim environment that I use. This sincludes the following resources:
@@ -30,6 +33,13 @@ vim-setup configures the customize vim environment that I use. This sincludes th
   * Leader key set to space instead of backslash.
   * The [desert](https://github.com/fugalh/desert.vim) color scheme.
   * Incremental highlighted search.
+  * Shortcuts for oft-used, but cumbersome-to-type commands, such as these.
+    * <space> h - clear highlighting of last search
+    * <space> n - toggle line numbers
+    * <space> p - insert in paste mode (keeps the formatting of the copied text)
+    * <space> s - Reload .vimrc file (good for seeing changes without exiting the file)
+    * <space 1/2/3/4 - common Perl commands: syntax check, debugger, perltidy, and prove respectively on current file
+
 
 * Several vim plugins installed as git submodules. These can be updated by running `git submodule update` and
 include the following:

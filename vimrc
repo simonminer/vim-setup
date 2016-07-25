@@ -44,6 +44,9 @@ set hlsearch
 " clear highlighting for current search
 noremap <leader>h :noh<cr>
 
+# use a more readable highlight color
+hi Search term=bold ctermbg=4 guibg=DarkBlue
+
 " wrap to top of file when searching
 set wrapscan
 
@@ -113,7 +116,6 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_loc_list_height=5
-hi Search term=bold ctermbg=4 guibg=DarkBlue
 
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_perl_checkers = ['perl', 'podchecker']
