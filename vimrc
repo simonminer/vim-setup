@@ -44,7 +44,7 @@ set hlsearch
 " clear highlighting for current search
 noremap <leader>h :noh<cr>
 
-# use a more readable highlight color
+" use a more readable highlight color
 hi Search term=bold ctermbg=4 guibg=DarkBlue
 
 " wrap to top of file when searching
