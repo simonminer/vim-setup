@@ -38,6 +38,7 @@ vim-setup configures the customize vim environment that I use. This sincludes th
     * &lt;space> n - toggle line numbers
     * &lt;space> p - insert in paste mode (keeps the formatting of the copied text)
     * &lt;space> s - Reload .vimrc file (good for seeing changes without exiting the file)
+    * &lt;space> x - Toggle syntax checking on write with Syntastic
     * &lt;space> 1/2/3/4 - common Perl commands: syntax check, debugger, perltidy, and prove respectively on current file
 
 
