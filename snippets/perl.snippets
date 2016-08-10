@@ -404,7 +404,7 @@ snippet clu use Getopt::Long
 # GetOptions
 snippet cl GetOptions
 	GetOptions(
-	  '${1:argument}${2}' => \$args{'$1'},
+	  '${1:argument}${2}' => \\$args{'$1'},
 	);
 
 ### Database
