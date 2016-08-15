@@ -382,7 +382,7 @@ snippet isnt isnt test
 # dump variable contents
 snippet dump dump variable contents
 	use Data::Dumper;
-	warn Dumper( ${1:variable} )
+	warn Dumper( ${1:variable} );
 # generate callstack
 snippet callstack generate callstack
 	my $level = 0;
@@ -396,6 +396,10 @@ snippet callstack generate callstack
 # mod_perl log message
 snippet mpl mod_perl log message
 	Apache->request->log->notice( "${1:message}" );
+# dump variable contents to mod_perl log
+snippet mpd dump variable contents to mod_perl log
+	use Data::Dumper;
+	Apache->request->log->notice( "${1:message}: " . Dumper( ${2:variable} ) );
 ### Command Line Arguments
 # use Getopt::Long
 snippet clu use Getopt::Long
