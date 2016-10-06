@@ -280,14 +280,12 @@ snippet pod main POD documentation for file
 	=cut
 # subroutine heading and description
 snippet psub POD subroutine heading and description
-	=over 4
 	=item ${1:function_name}
 
 	  ${2:examples}
 
 	${0:description}
 
-	=back
 	=cut
 # program section break
 snippet ## program section break
@@ -322,12 +320,12 @@ snippet open read file and process each line
 	close( $$1 );
 # read directory and process each file
 snippet opendir read directory and process each file
-	opendir( <$${1:dh}>, $${2:dir} ) or die "Could not open directory $$2 - $!";
-	my @${3:files} = map( { /^\.\.?$/ ? () : $_ } readdir(  ) );
+	opendir( $${1:dh}, $${2:dir} ) or die "Could not open directory $$2 - $!";
+	my @${3:files} = map( { /^\.\.?$/ ? () : $_ } readdir( $$1 ) );
+	close( $$1 );
 	for my $${4:file} ( @$3 ) {
 	    ${0}
 	}
-	close( <$$1> );
 # read entire File
 snippet slurp read entire file
 	my $${1:var} = do { local $/; open my $2, '<', "${2:file}"; <FILE> };
