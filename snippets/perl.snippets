@@ -320,8 +320,8 @@ snippet open read file and process each line
 	close( $$1 );
 # read directory and process each file
 snippet opendir read directory and process each file
-	opendir( $${1:dh}, $${2:dir} ) or die "Could not open directory $$2 - $!";
-	my @${3:files} = map( { /^\.\.?$/ ? () : $_ } readdir( $$1 ) );
+	opendir( my $${1:dh}, $${2:dir} ) or die "Could not open directory $$2 - $!";
+	my @${3:files} = grep( { /^\.\.?$/ } readdir( $$1 ) );
 	close( $$1 );
 	for my $${4:file} ( @$3 ) {
 	    ${0}
