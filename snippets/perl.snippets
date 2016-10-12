@@ -310,27 +310,38 @@ snippet override
 		${0:# my ($self, $args) = @_;};
 	};
 
-### File System
+### File System Interaction
 # read file and process each line
 snippet open read file and process each line
-	open( my $${1:fh}, '<', $${2:file} ) or die "Could not open file $$2 - $!";
-	while ( my $${3:line} = <$$1> ) {
+	open( my $${1:fh}, '<', $${2:file} ) or ${3:$log->abort}( "Could not open file $$2 - $!" );
+	while ( my $${4:line} = <$$1> ) {
 	    ${0}
 	}
 	close( $$1 );
 # read directory and process each file
 snippet opendir read directory and process each file
-	opendir( my $${1:dh}, $${2:dir} ) or die "Could not open directory $$2 - $!";
-	my @${3:files} = grep( { /^\.\.?$/ } readdir( $$1 ) );
+	opendir( my $${1:dh}, $${2:dir} ) or ${3:$log->abort}( "Could not open directory $$2 - $!" );
+	my @${4:files} = grep( { !m/^\.\.?$/ } readdir( $$1 ) );
 	close( $$1 );
-	for my $${4:file} ( @$3 ) {
+	for my $${5:file} ( @$4 ) {
 	    ${0}
 	}
 # read entire File
 snippet slurp read entire file
 	my $${1:text} = do { local $/; open my $2, '<', "${2:file}"; <FILE> };
 	${0}
-
+# delete file
+snippet unlink delete file
+	unlink( $${1:file} ) or ${2:$log->abort}( "Could not delete file $$1: $!" );
+	${0}
+# rename file
+snippet rename rename file
+	rename( $${1:source_file}, $${2:destination_file} ) or ${3:$log->abort}( "Could not rename file $$1 to $$2: $!" );
+	${0}
+# copy file (via File::copy)
+snippet copy copy file (via File::Copy)
+	copy( $${1:source_file}, $${2:destination_file} ) or ${3:$log->abort}( "Could not copy file $$1 to $$2: $!" );
+	${0}
 ### Date and time
 # today's date
 snippet today today's date
@@ -346,7 +357,6 @@ snippet timer time an operation:u
 	my $start = time();
 	${0}
 	my $elapsed = tiem() - $start;
-
 ### Testing
 # set up unit test program
 snippet tunit set up unit test program
