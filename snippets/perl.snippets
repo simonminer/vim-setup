@@ -79,10 +79,10 @@ snippet cfor C-style for loop
 	}
 # for loop one-liner
 snippet xfor for loop one-liner
-	${1:expression} for @${2:array};
+	${1:expression} for ${2:array};
 # foreach Loop
 snippet for
-	for my $${1:x} ( @${2:array} ) {
+	for my $${1:x} ( ${2:array} ) {
 		${0}
 	}
 # foreach key
@@ -211,7 +211,7 @@ snippet values values
 	values( %${1:hash} )
 # push
 snippet push push
-	push( @${1:array}, $${2:item} )
+	push( @${1:array}, ${2:item} )
 # pop
 snippet pop pop
 	pop( @${1:array} )
@@ -220,10 +220,10 @@ snippet shift shift
 	shift( @${1:array} )
 # unshift
 snippet unshift unshift
-	unshift( $${1:item}, @${2:array} )
+	unshift( @${1:array}, ${2:value} )
 # sort
 snippet sort sort
-	sort( { $${1:a} <=> $${2:b} } @${3:array} )
+	sort( { $${1:a} <=> $${2:b} } ${3:array} )
 # chomp
 snippet chomp chomp
 	chomp( $${1:line} )
@@ -328,7 +328,7 @@ snippet opendir read directory and process each file
 	}
 # read entire File
 snippet slurp read entire file
-	my $${1:var} = do { local $/; open my $2, '<', "${2:file}"; <FILE> };
+	my $${1:text} = do { local $/; open my $2, '<', "${2:file}"; <FILE> };
 	${0}
 
 ### Date and time
@@ -371,10 +371,10 @@ snippet tunit set up unit test program
 	done_testing;
 # is test
 snippet is is test
-	is( $${1:actual}, ${2:expected}, "${3:description}" );
+	is( ${1:actual}, ${2:expected}, "${3:description}" );
 # is test
 snippet isnt isnt test
-	isnt( $${1:actualtest}, ${2:expected}, "${3:description}" );
+	isnt( ${1:actualtest}, ${2:expected}, "${3:description}" );
 
 ### Debugging
 # dump variable contents
@@ -462,7 +462,7 @@ snippet la abort program
 ### Miscellanious
 # heredoc
 snippet here heredoc
-	my $${1:variable} = <<"${2:label}";
+	my $${1:text} = <<"${2:label}";
 	${0}
 	$2
 # new hash
