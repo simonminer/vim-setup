@@ -6,7 +6,7 @@ My personal setup for the vim editor, including .vimrc file and plugins.
 
 * This project was developed on and for Mac OSX El Capitan and CentOS 5 and 6
 Your mileage may vary on other platforms.
-* The setup assumes Git 7.4 or later.
+* The setup assumes vim 7.4 or later.
 
 ## Installation
 
