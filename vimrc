@@ -69,8 +69,8 @@ inoremap # X<C-H>#
 nmap <F4> :!rake test %<cr>
 
 " Toggle paste mode
-map <leader>p :call Toggle_paste_mode()<cr>i
-set pastetoggle=<leader>p
+map <leader>; :call Toggle_paste_mode()<cr>i
+set pastetoggle=<leader>;
 let paste_mode = 0 " 0 = normal, 1 = paste
 
 func! Toggle_paste_mode()
