@@ -122,5 +122,8 @@ let g:syntastic_perl_checkers = ['perl', 'podchecker']
 let g:syntastic_enable_javascript_checker = 1
 let g:syntastic_javascript_checkers = ['jshint']
 
+" Use the new Snipmate parser and suppress deprecation warning.
+let g:snipMate = { 'snippet_version' : 1 }
+
 " shortcut for toggling syntastic
 map <leader>x :SyntasticToggleMode<cr>

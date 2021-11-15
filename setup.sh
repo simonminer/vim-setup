@@ -2,7 +2,7 @@
 
 echo "[$0] Fetching the latest versions of git submodules vim plugins..."
 git submodule init
-git submodule update
+git submodule update --remote --merge
 
 echo "[$0] Setting up symbolic links for ~/.vim directory and ~/.vimrc file..."
 VIMHOME="$HOME/.vim"
